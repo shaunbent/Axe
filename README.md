@@ -1,3 +1,5 @@
+![Axe Sass Framework](http://cl.ly/Uhp0/download/AXE-Logo.png)
+
 # Axe Sass Framework
 
 Axe is my personal Front End Development starting point. It is very much designed around how I approach my front end builds so might not suit everyone but if you like the structure and approach then feel free to give it a whirl.
