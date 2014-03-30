@@ -159,10 +159,23 @@ module.exports = function( grunt ) {
     // a task to manage bower and move files to where want them
     grunt.registerTask( 'bower', function() {
 
+        grunt.log.subhead( 'Bower me baby' );
+
         grunt.loadNpmTasks( 'grunt-contrib-uglify' );
         grunt.loadNpmTasks( 'grunt-bowercopy' );
 
         grunt.task.run([ 'bowercopy', 'uglify:bower' ]);
+
+    });
+
+    // a task to create and compile webfonts on the fly
+    grunt.registerTask( 'icons', function() {
+
+        grunt.log.subhead( 'Building some Icons for you love!' );
+
+        grunt.loadNpmTasks( 'grunt-webfont' );
+
+        grunt.task.run([ 'webfont' ]);
 
     });
 
@@ -184,16 +197,6 @@ module.exports = function( grunt ) {
                 'uglify',
                 'imagemin',
                 'svgmin'
-            ]);
-
-        } else if( mode == 'icons' ) {
-
-            grunt.log.subhead( 'Running Grunt in `Icon` mode' );
-
-            grunt.loadNpmTasks( 'grunt-webfont' );
-
-            grunt.task.run([
-                'webfont'
             ]);
 
         } else {
