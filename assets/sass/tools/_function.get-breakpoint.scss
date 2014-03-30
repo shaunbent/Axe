@@ -11,9 +11,9 @@
  */
 @function get-breakpoint-width( $name ) {
 
-    @if ( map-has-key( $breakpoints, $name ) ) {
+    @if ( map-has-key( $axe-breakpoints, $name ) ) {
 
-        @return map-get( $breakpoints, $name );
+        @return map-get( $axe-breakpoints, $name );
 
     } @else {
 
