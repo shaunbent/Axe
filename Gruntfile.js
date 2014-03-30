@@ -67,8 +67,8 @@ module.exports = function( grunt ) {
                     style: 'expanded'
                 },
                 files: {
-                    'main.css': 'main.scss',
-                    'main-old-ie.css': 'main-old-ie.scss'
+                    'assets/css/main.css': 'assets/sass/main.scss',
+                    'assets/css/main-old-ie.css': 'assets/sass/main-old-ie.scss'
                 }
             },
             prod: {
@@ -76,11 +76,11 @@ module.exports = function( grunt ) {
                     style: 'compressed'
                 },
                 files: {
-                    'main.css': 'main.scss',
-                    'main-old-ie.css': 'main-old-ie.scss'
+                    'assets/css/main.css': 'assets/sass/main.scss',
+                    'assets/css/main-old-ie.css': 'assets/sass/main-old-ie.scss'
                 }
             }
-        }
+        },
 
         // concatenation and minification all in one
         uglify: {
@@ -198,7 +198,7 @@ module.exports = function( grunt ) {
         } else {
 
             grunt.task.run([
-                'sass',
+                'sass:dist',
                 'concat',
                 'watch'
             ]);

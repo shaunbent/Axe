@@ -33,7 +33,7 @@ $base-spacing-unit: $base-line-height;
 $base-text-color: #333;
 $base-background-color: #fff;
 $base-link-color: rgb(0,96,165);
-$base-link-color-hover: lighten( $link-color, 20% );
+$base-link-color--hover: lighten( $base-link-color, 20% );
 
 
 /**

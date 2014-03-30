@@ -22,7 +22,7 @@ $axe-enable-box--large:   false !default;
  */
 .box,
 %box {
-    @extend %clearfix;
+    @extend %cf;
     display: block; /* [1] */
     @include rem((
         padding: $axe-box-padding

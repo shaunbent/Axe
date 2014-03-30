@@ -12,29 +12,29 @@
  *
  */
 
-<% if (fontfaceStyles) { %>@font-face {
-	font-family: '<%= fontBaseName %>';<% if (eot) { %>
+<% if (fontfaceStyles) { %>
+@font-face {
+	font-family:"<%= fontBaseName %>";<% if (fontSrc1) { %>
 	src: <%= fontSrc1 %>;<% }%>
 	src: <%= fontSrc2 %>;
 	font-weight: normal;
 	font-style: normal;
 }
 <% } %>
-<% if (baseStyles) { %>.i {
+<% if (baseStyles) { %>
+.i {
 	font-family: '<%= fontBaseName %>';
-    speak: none;
-    font-style: normal!important;
-    font-weight: normal!important;
-    text-decoration: none!important;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+     speak: none;
+     font-style: normal !important;
+     font-weight: normal !important;
+     text-decoration: none !important;
+     text-rendering: optimizeLegibility;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
 }
 <% } %>
 <% if (iconsStyles) { %>
     <% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { %>
-        .i-<%= glyphs[glyphIdx] %>:before {
-    	    content: '<% if (ligatures) { %><%= glyphs[glyphIdx] %><% } else { %>\<%= (61696+glyphIdx).toString(16) %><% } %>';
-        }
+.i--<%= glyphs[glyphIdx] %>:before { content:"\<%= codepoints[glyphIdx] %>"; }
     <% } %>
 <% } %>
