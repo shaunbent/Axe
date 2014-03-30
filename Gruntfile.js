@@ -132,12 +132,12 @@ module.exports = function( grunt ) {
 
         // watch our project for changes
         watch: {
-            compass: {
+            sass: {
                 files: [
                     'assets/sass/*.scss',
                     'assets/sass/**/*.scss'
                 ],
-                tasks: [ 'compass' ]
+                tasks: [ 'dist' ]
             },
             js: {
                 files: [
