@@ -14,32 +14,6 @@ module.exports = function( grunt ) {
 
     var mode = grunt.option( 'mode' ) || 'dev';
 
-    // load tasks
-    grunt.loadNpmTasks( 'grunt-contrib-sass' );
-    grunt.loadNpmTasks( 'grunt-contrib-watch' );
-    grunt.loadNpmTasks( 'grunt-contrib-concat' );
-    grunt.loadNpmTasks( 'grunt-bowercopy' );
-
-    if ( mode == 'prod' ) {
-
-        grunt.log.subhead( 'Running Grunt in `Production` mode' );
-
-        grunt.loadNpmTasks( 'grunt-svgmin' );
-        grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-        grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
-
-    } else if( mode == 'icons' ) {
-
-        grunt.log.subhead( 'Running Grunt in `Icon` mode' );
-
-        grunt.loadNpmTasks( 'grunt-webfont' );
-
-    } else {
-
-        grunt.log.subhead( 'Running Grunt in `Development` mode' );
-
-    }
-
     grunt.initConfig({
 
         // bower process
@@ -54,7 +28,7 @@ module.exports = function( grunt ) {
                     destPrefix: 'assets/js/vendor'
                 },
                 files: {
-                    'jquery.js': 'jquery/jquery.js',
+                    'jquery.min.js': 'jquery/dist/jquery.min.js',
                     'modernizr.js': 'modernizr/modernizr.js'
                 },
             }
@@ -89,6 +63,11 @@ module.exports = function( grunt ) {
                     'assets/js/main.js': [ 'assets/js/main.js' ]
                 }
             },
+            bower: {
+                files: {
+                    'assets/js/vendor/modernizr.min.js': [ 'assets/js/vendor/modernizr.js' ]
+                }
+            }
         },
 
         // concatenation
@@ -172,14 +151,32 @@ module.exports = function( grunt ) {
 
     });
 
+    // load tasks
+    grunt.loadNpmTasks( 'grunt-contrib-sass' );
+    grunt.loadNpmTasks( 'grunt-contrib-concat' );
+    grunt.loadNpmTasks( 'grunt-contrib-watch' );
+
     // a task to manage bower and move files to where want them
-    grunt.registerTask( 'bower', [ 'bowercopy' ] );
+    grunt.registerTask( 'bower', function() {
+
+        grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+        grunt.loadNpmTasks( 'grunt-bowercopy' );
+
+        grunt.task.run([ 'bowercopy', 'uglify:bower' ]);
+
+    });
 
     // register default task when `grunt` command is run
     grunt.registerTask( 'default', function() {
 
         // some tasks we only want to run in production mode
         if ( mode == 'prod' ) {
+
+            grunt.log.subhead( 'Running Grunt in `Production` mode' );
+
+            grunt.loadNpmTasks( 'grunt-svgmin' );
+            grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+            grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
 
             grunt.task.run([
                 'sass:prod',
@@ -191,11 +188,17 @@ module.exports = function( grunt ) {
 
         } else if( mode == 'icons' ) {
 
+            grunt.log.subhead( 'Running Grunt in `Icon` mode' );
+
+            grunt.loadNpmTasks( 'grunt-webfont' );
+
             grunt.task.run([
                 'webfont'
             ]);
 
         } else {
+
+            grunt.log.subhead( 'Running Grunt in `Development` mode' );
 
             grunt.task.run([
                 'sass:dist',
