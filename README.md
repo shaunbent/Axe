@@ -1,4 +1,4 @@
-![Axe Sass Framework](http://cl.ly/Uhp0/download/AXE-Logo.png)
+![Axe Sass Framework](http://cl.ly/Ui7L/download/AXE-Logo.png)
 
 # Axe Sass Framework
 
