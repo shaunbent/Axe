@@ -1,0 +1,32 @@
+{
+    "name": "Axe",
+    "version": "0.1.0",
+    "homepage": "https://github.com/shaunbent/Axe",
+    "authors": [
+        "Shaun Bent <shaunbent@me.com>"
+    ],
+    "description": "A personal front end development framework",
+    "main": "index.html",
+    "keywords": [
+        "Front",
+        "End",
+        "Sass",
+        "Grunt",
+        "OOCSS",
+        "BEM",
+        "Mixins",
+        "Framework"
+    ],
+    "license": "Apache",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery":         "~1.11.0",
+        "modernizr":      "~2.7.2"
+    }
+}

@@ -1,0 +1,38 @@
+/*------------------------------------*\
+    #TABS
+\*------------------------------------*/
+
+/**
+ * A simple abstraction for making equal-width navigation tabs.
+ *
+ * 1. Tables for layout!
+ * 2. Force the object to be the full width of its parent. Combined with [2],
+ *    this makes the object behave in a quasi-`display: block;` manner.
+ * 3. Reset any residual styles (most likely from lists).
+ * 4. Force all `table-cell` children to have equal widths.
+ *
+ * Source: https://github.com/inuitcss/objects.tabs
+ */
+.tabs,
+%tabs {
+    display: table; /* [1] */
+    width: 100%; /* [2] */
+    margin:  0; /* [3] */
+    padding: 0; /* [3] */
+
+    table-layout: fixed; /* [4] */
+
+    list-style: none; /* [3] */
+
+    text-align: center;
+}
+
+.tabs__item,
+%tabs__item {
+    display: table-cell; /* [4] */
+}
+
+.tabs__link,
+%tabs__link {
+    display: block;
+}

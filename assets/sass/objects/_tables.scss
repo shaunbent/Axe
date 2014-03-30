@@ -1,0 +1,175 @@
+/*------------------------------------*\
+    #TABLES
+\*------------------------------------*/
+
+/**
+ * Some useful helpers for common table patterns.
+ *
+ * Source: https://github.com/inuitcss/objects.tables
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-table-padding--compact:  quarter($base-spacing-unit) !default;
+$axe-table-padding--cosy:     halve($base-spacing-unit) !default;
+$axe-table-padding--comfy:    $base-spacing-unit !default;
+
+$axe-table-border-width:      1px !default;
+$axe-table-border-style:      solid !default;
+$axe-table-border-color:      #ccc !default;
+
+$axe-enable-table--fixed:     false !default;
+$axe-enable-table--compact:   false !default;
+$axe-enable-table--cosy:      false !default;
+$axe-enable-table--comfy:     false !default;
+$axe-enable-table--cells:     false !default;
+$axe-enable-table--rows:      false !default;
+$axe-enable-table--columns:   false !default;
+
+
+.table,
+%table {
+    width: 100%;
+}
+
+
+@if ( $axe-enable-table--fixed == true ) {
+
+    /**
+     * Force tables into having equal-width columns.
+     */
+    .table--fixed,
+    %table--fixed {
+        table-layout: fixed;
+    }
+
+}
+
+
+@if ( $axe-enable-table--compact == true ) {
+
+    /**
+     * Tables with very tightly packed cells.
+     */
+    .table--compact,
+    %table--compact {
+
+        th,
+        td {
+            @include rem((
+                padding: $axe-table-padding--compact
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-table--cosy == true ) {
+
+    /**
+     * Lightly packed cells.
+     */
+    .table--cosy,
+    %table--cosy {
+
+        th,
+        td {
+            @include rem((
+                padding: $axe-table-padding--cosy
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-table--comfy == true ) {
+
+    /**
+     * Tables with very widely padded cells.
+     */
+    .table--comfy,
+    %table--comfy {
+
+        th,
+        td {
+            @include rem((
+                padding: $axe-table-padding--comfy
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-table--cells == true ) {
+
+    /**
+     * Add borders around a `table`.
+     */
+    .table--cells,
+    %table--cells {
+
+        th,
+        td {
+            border: $axe-table-border-width $axe-table-border-style $axe-table-border-color;
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-table--rows == true ) {
+
+    /**
+     * Add borders only to `table`’s rows.
+     */
+    .table--rows,
+    %table--rows {
+
+        &,
+        th,
+        td {
+            border: 0 $axe-table-border-style $axe-table-border-color;
+        }
+    }
+
+    .table--rows,
+    %table--rows {
+        border-top-width: $axe-table-border-width;
+
+        th,
+        td {
+            border-bottom-width: $axe-table-border-width;
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-table--columns == true ) {
+
+    /**
+     * Add borders only to `table`’s columns.
+     */
+    .table--columns,
+    %table--columns {
+
+        &,
+        th,
+        td {
+            border: 0 $axe-table-border-style $axe-table-border-color;
+        }
+    }
+
+    .table--columns,
+    %table--columns {
+        border-left-width: $axe-table-border-width;
+
+        th,
+        td {
+            border-right-width: $axe-table-border-width;
+        }
+    }
+
+}

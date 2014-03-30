@@ -1,0 +1,142 @@
+/*------------------------------------*\
+    #HELPERS
+\*------------------------------------*/
+
+/**
+ * Source: http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
+ */
+.text-truncate,
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/**
+ * Add/remove floats
+ */
+.float--right,
+%float--right   { float: right !important; }
+
+.float--left,
+%float--left    { float: left !important; }
+
+.float--none,
+%float--none    { float: none !important; }
+
+
+/**
+ * Text alignment
+ */
+.text--left,
+%text--left     { text-align: left   !important; }
+
+.text--center,
+%text--center   { text-align: center !important; }
+
+.text--right,
+%text--right    { text-align: right  !important; }
+
+
+/**
+ * Add a help cursor to any element that gives the user extra information on
+ * `:hover`.
+ */
+.informative,
+%informative {
+    cursor: help;
+}
+
+
+/**
+ * Mute an object by reducing its opacity.
+ */
+.muted,
+%muted {
+    opacity: 0.5;
+    filter: alpha(opacity = 50);
+}
+
+
+/**
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden,
+%hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+
+/**
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.vh,
+%vh {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+    /**
+     * Extends the .visuallyhidden class to allow the element to be focusable
+     * when navigated to via the keyboard: h5bp.com/p
+     */
+    &.focusable:active,
+    &.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+
+}
+
+
+/**
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible,
+%invisible {
+    visibility: hidden;
+}
+
+
+/**
+ * Image replacement
+ */
+.ir,
+%ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+
+}
+
+
+/**
+ * @extend this to remove the font flicker in webkit browsers during a CSS transition
+ */
+.no-flicker,
+%no-flicker {
+	-webkit-perspective: 1000;
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+}

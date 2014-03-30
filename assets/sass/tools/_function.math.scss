@@ -1,0 +1,29 @@
+/*------------------------------------*\
+    #MATH HELPERS
+\*------------------------------------*/
+
+/**
+ * Halve and double numbers, returning rounded integers. E.g.:
+ *
+ * .foo {
+ *     padding: halve(24px);
+ * }
+ *
+ * Source: https://github.com/inuitcss/tools.functions
+ */
+
+@function quarter( $axe-number ) {
+    @return round( $axe-number / 4 );
+}
+
+@function halve( $axe-number ) {
+    @return round( $axe-number / 2 );
+}
+
+@function double( $axe-number ) {
+    @return round( $axe-number * 2 );
+}
+
+@function quadruple( $axe-number ) {
+    @return round( $axe-number * 4 );
+}

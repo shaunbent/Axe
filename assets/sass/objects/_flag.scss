@@ -1,0 +1,339 @@
+/*------------------------------------*\
+    #FLAG
+\*------------------------------------*/
+
+/**
+ * The flag object is a design pattern similar to the media object, however it
+ * utilises `display: table[-cell];` to give us control over the vertical
+ * alignments of the text and image. csswizardry.com/2013/05/the-flag-object
+ *
+ * Source: https://github.com/inuitcss/objects.flag
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-flag-gutter:             $base-spacing-unit !default;
+$axe-flag-gutter--small:      halve( $axe-flag-gutter ) !default;
+$axe-flag-gutter--large:      double( $axe-flag-gutter ) !default;
+
+$axe-enable-flag--small:      false !default;
+$axe-enable-flag--large:      false !default;
+$axe-enable-flag--rev:        false !default;
+$axe-enable-flag--flush:      false !default;
+$axe-enable-flag--top:        false !default;
+$axe-enable-flag--bottom:     false !default;
+$axe-enable-flag--responsive: false !default;
+$axe-flag-collapse-at:        medium !default;
+
+
+/**
+ * 1. Allows us to control vertical alignments
+ * 2. Force the object to be the full width of its parent. Combined with [1],
+ *    this makes the object behave in a quasi-`display: block;` manner.
+ */
+.flag,
+%flag {
+    display: table; /* [1] */
+    width: 100%; /* [2] */
+}
+
+/**
+ * Items within a flag object. There should only ever be one of each.
+ *
+ * 1. Default to aligning content to their middles.
+ */
+.flag__img,
+%flag__img,
+.flag__body,
+%flag__body {
+    display: table-cell;
+    vertical-align: middle; /* [1] */
+}
+
+/**
+ * Flag images have a space between them and the body of the object.
+ */
+.flag__img,
+%flag__img {
+    @include rem((
+        padding-right: $axe-flag-gutter
+    ));
+
+    > img {
+        display: block;
+        max-width: none;
+    }
+}
+
+/**
+ * The container for the main content of the flag object.
+ *
+ * 1. Forces the `.flag__body` to take up all remaining space.
+ */
+.flag__body,
+%flag__body {
+    width: 100%; /* [1] */
+}
+
+
+@if ( $axe-enable-flag--small == true ) {
+
+    /**
+     * Small flags.
+     */
+    .flag--small,
+    %flag--small {
+
+        > .flag__img,
+        > %flag__img {
+            @include rem((
+                padding-right: $axe-flag-gutter--small
+            ));
+        }
+
+        @if ( $axe-enable-flag--rev == true ) {
+
+            /**
+             * Small reversed flags.
+             */
+            &.flag--rev,
+            &%flag--rev {
+
+                > .flag__img,
+                > %flag__img {
+                    @include rem((
+                        padding-right: 0,
+                        padding-left:  $axe-flag-gutter--small
+                    ));
+                }
+            }
+
+        }
+
+    }
+
+}
+
+@if ( $axe-enable-flag--large == true ) {
+
+    /**
+     * Large flags.
+     */
+    .flag--large,
+    %flag--large {
+
+        > .flag__img,
+        > %flag__img {
+            @include rem((
+                padding-right: $axe-flag-gutter--large
+            ));
+        }
+
+        @if ( $axe-enable-flag--rev == true ) {
+
+            /**
+             * Large reversed flags.
+             */
+            &.flag--rev,
+            &%flag--rev {
+
+                > .flag__img,
+                > %flag__img {
+                    @include rem((
+                        padding-right: 0,
+                        padding-left:  $axe-flag-gutter--large
+                    ));
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+@if ( $axe-enable-flag--rev == true ) {
+
+    /**
+     * Reversed flag objects have their image-content to the right, and text-content
+     * to the left.
+     *
+     * 1. Swap the rendered direction of the object…
+     * 2. …and reset it.
+     * 3. Reassign margins to the correct sides.
+     */
+    .flag--rev,
+    %flag--rev {
+        direction: rtl; /* [1] */
+
+        > .flag__img,
+        > %flag__img,
+        > .flag__body,
+        > %flag__body {
+            direction: ltr; /* [2] */
+        }
+
+        > .flag__img,
+        > %flag__img {
+            @include rem((
+                padding-right: 0, /* [3] */
+                padding-left: $axe-flag-gutter /* [3] */
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-flag--flush == true ) {
+
+    /**
+     * Flush flag objects have no space between the image- and text-content.
+     */
+    .flag--flush,
+    %flag--flush {
+
+        > .flag__img,
+        > %flag__img {
+            padding-right: 0;
+            padding-left:  0;
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-flag--top == true ) {
+
+    /**
+     * Vertically top aligned flag objects.
+     */
+    .flag--top,
+    %flag--top {
+
+        .flag__img,
+        %flag__img,
+        .flag__body,
+        %flag__body {
+            vertical-align: top;
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-flag--bottom == true ) {
+
+    /**
+     * Vertically bottom aligned flag objects.
+     */
+    .flag--bottom,
+    %flag--bottom {
+
+        .flag__img,
+        %flag__img,
+        .flag__body,
+        %flag__body {
+            vertical-align: bottom;
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-flag--responsive == true ) {
+
+    /**
+     * Responsive flag objects.
+     *
+     * There is a very pragmatic, simple implementation of a responsive flag
+     * object, which simply places the text-content beneath the image-content.
+     *
+     * We use a `max-width` media query because:
+     *
+     * a) it is the least verbose method in terms of amount of code required.
+     * b) the flag object’s default state is image-next-to-text, so its stacked
+     *    state is the exception, rather than the rule.
+     */
+
+    @include mq( $from: $axe-media-collapse-at ) {
+
+        .flag--responsive,
+        %flag--responsive {
+
+            @if ( $axe-enable-flag--rev == true ) {
+
+                /**
+                 * Disable reversal of content because there is no concept of
+                 * ‘reversed’ in a stacked layout.
+                 */
+                direction: ltr;
+            }
+
+            &,
+            > .flag__img,
+            > %flag__img,
+            > .flag__body,
+            > %flag__body {
+                display: block;
+            }
+
+            /**
+             * Rework the spacings on regular flag objects.
+             */
+            > .flag__img,
+            > %flag__img {
+                @include rem((
+                    padding-right: 0,
+                    padding-left:  0,
+                    margin-bottom: $axe-flag-gutter
+                ));
+            }
+
+            @if ( $axe-enable-flag--small == true ) {
+
+                /**
+                 * Small responsive flags.
+                 *
+                 * Take a little more heavy-handed approach to reworking
+                 * spacings on flags that are also small flags in their regular
+                 * state.
+                 */
+                &.flag--small,
+                &%flag--small {
+
+                    > .flag__img,
+                    > %flag__img {
+                        padding-right: 0;
+                        padding-left:  0;
+                    }
+                }
+
+            }
+
+            @if ( $axe-enable-flag--large == true ) {
+
+                /**
+                 * Large responsive flags.
+                 *
+                 * Take a little more heavy-handed approach to reworking
+                 * spacings on flags that are also large flags in their regular
+                 * state.
+                 */
+                &.flag--large,
+                &%flag--large {
+
+                    > .flag__img,
+                    > %flag__img {
+                        padding-right: 0;
+                        padding-left:  0;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,84 @@
+/*------------------------------------*\
+    #UI-LIST
+\*------------------------------------*/
+
+/**
+ * The UI list object creates blocky list items with a keyline separator out of
+ * a `ul` or `ol`.
+ *
+ * Source: https://github.com/inuitcss/objects.ui-list
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-ui-list-padding:         $base-spacing-unit !default;
+$axe-ui-list-padding--small:  halve( $axe-ui-list-padding ) !default;
+$axe-ui-list-padding--large:  double( $axe-ui-list-padding ) !default;
+
+$axe-ui-list-border-width:    1px !default;
+$axe-ui-list-border-style:    solid !default;
+$axe-ui-list-border-color:    #ccc !default;
+
+$axe-enable-ui-list--small:   false !default;
+$axe-enable-ui-list--large:   false !default;
+
+
+.ui-list,
+%ui-list,
+.ui-list__item,
+%ui-list__item {
+    border: 0 $axe-ui-list-border-style $axe-ui-list-border-color;
+}
+
+.ui-list,
+%ui-list {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+    border-top-width: $axe-ui-list-border-width;
+}
+
+.ui-list__item,
+%ui-list__item {
+    @include rem((
+        padding: $axe-ui-list-padding
+    ));
+    border-bottom-width: $axe-ui-list-border-width;
+}
+
+
+@if ( $axe-enable-ui-list--small == true ) {
+
+    /**
+     * Small ui-lists.
+     */
+    .ui-list--small,
+    %ui-list--small {
+
+        > .ui-list__item,
+        > %ui-list__item {
+            @include rem((
+                padding: $axe-ui-list-padding--small
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-ui-list--large == true ) {
+
+    /**
+     * Large ui-lists.
+     */
+    .ui-list--large,
+    %ui-list--large {
+
+        > .ui-list__item,
+        > %ui-list__item {
+            @include rem((
+                padding: $axe-ui-list-padding--large
+            ));
+        }
+    }
+
+}

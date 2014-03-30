@@ -1,0 +1,97 @@
+/**
+ * Imports the various partials to create the main stylesheet
+ * for the site
+ *
+ * We import files in the following order, which is insired by
+ * Harry Roberts 'Inverted Triangle Architecture':
+ *
+ * SETTINGS - Sass vars, etc
+ * TOOLS - Mixins and functions
+ * GENERIC - High-level styles such as resets
+ * BASE - Initial site wide styling, typography
+ * OBJECTS - Object and abstractions
+ * COMPONENTS - Site/project specific UI elements
+ * TRUMPS - Overrides and helper classes
+ *
+ * The theory behind this archietecture is that styles should only
+ * become more specfic as we move down the file.
+ */
+
+/*------------------------------------*\
+	#SETTINGS
+\*------------------------------------*/
+
+@import "settings/global-config";
+@import "settings/site-config";
+
+/*------------------------------------*\
+    #TOOLS
+\*------------------------------------*/
+
+// functions
+@import "tools/function.math";
+@import "tools/function.rem";
+@import "tools/function.pem";
+@import "tools/get-breakpoint";
+
+// mixins
+@import "tools/mixin.css3";
+@import "tools/mixin.mq";
+@import "tools/mixin.rem";
+@import "tools/mixin.old-ie";
+@import "tools/mixin.font-size";
+@import "tools/mixin.font";
+@import "tools/mixin.hover";
+@import "tools/mixin.placeholder";
+@import "tools/mixin.zero-last";
+@import "tools/mixin.widths";
+
+/*------------------------------------*\
+    #GENERIC
+\*------------------------------------*/
+
+@import "generic/normalise";
+@import "generic/reset";
+@import "generic/box-sizing";
+@import "generic/shared";
+@import "generic/clearfix";
+
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+
+@import "base/page";
+@import "base/paragraphs";
+@import "base/headings";
+@import "base/links";
+@import "base/lists";
+@import "base/tables";
+@import "base/images";
+
+/*------------------------------------*\
+    #OBJECTS
+\*------------------------------------*/
+
+@import "objects/layout";
+@import "objects/bare-list";
+@import "objects/block-list";
+@import "objects/ui-list";
+@import "object/media";
+@import "objects/flag";
+@import "objects/box";
+@import "objects/tabs";
+@import "objects/tables";
+@import "objects/icons";
+
+/*------------------------------------*\
+    #COMPONENTS
+\*------------------------------------*/
+
+@import "components/global-ui";
+
+/*------------------------------------*\
+    #TRUMPS
+\*------------------------------------*/
+
+@import "trumps/helpers";
+@import "trumps/spacing";

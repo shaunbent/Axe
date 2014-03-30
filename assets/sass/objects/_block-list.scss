@@ -1,0 +1,70 @@
+/*------------------------------------*\
+    #BLOCK-LIST
+\*------------------------------------*/
+
+/**
+ * The block list object creates blocky list items out of a `ul` or `ol`.
+ *
+ * Source: https://github.com/inuitcss/objects.block-list
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-block-list-padding:          $base-spacing-unit !default;
+$axe-block-list-padding--small:   halve( $axe-block-list-padding ) !default;
+$axe-block-list-padding--large:   double( $axe-block-list-padding ) !default;
+
+$axe-enable-block-list--small:    false !default;
+$axe-enable-block-list--large:    false !default;
+
+
+.block-list,
+%block-list {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+}
+
+.block-list__item,
+%block-list__item {
+    @include rem((
+        padding: $axe-block-list-padding
+    ));
+}
+
+
+@if ( $axe-enable-block-list--small == true ) {
+
+    /**
+     * Small block-lists.
+     */
+    .block-list--small,
+    %block-list--small {
+
+        > .block-list__item,
+        > %block-list__item {
+            @include rem((
+                padding: $axe-block-list-padding--small
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-block-list--large == true ) {
+
+    /**
+     * Large block-lists.
+     */
+    .block-list--large,
+    %block-list--large {
+
+        > .block-list__item,
+        > %block-list__item {
+            @include rem((
+                padding: $axe-block-list-padding--large
+            ));
+        }
+    }
+
+}

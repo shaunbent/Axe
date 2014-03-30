@@ -1,0 +1,24 @@
+/*------------------------------------*\
+    #GET BREAKPOINT WIDTH
+\*------------------------------------*/
+
+/**
+ * All breakpoints are stored in a Sass Map with a readable name assigned
+ * to them. This function allows us to retreive the width from the readable
+ * name.
+ *
+ * Source: https://github.com/guardian/sass-mq
+ */
+@function get-breakpoint-width( $name ) {
+
+    @if ( map-has-key( $breakpoints, $name ) ) {
+
+        @return map-get( $breakpoints, $name );
+
+    } @else {
+
+        @return 'Breakpoint #{$name} does not exist';
+
+    }
+
+}

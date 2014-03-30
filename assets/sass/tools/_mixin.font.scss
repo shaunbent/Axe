@@ -1,0 +1,16 @@
+/*------------------------------------*\
+    #FONT
+\*------------------------------------*/
+
+/**
+ * Create all the relivant declearations for including a specific font
+ */
+@mixin font( $family, $weight, $font-size: false, $line-height: false ) {
+    font-family: $family;
+    font-weight: $weight;
+
+    // we only want to spit out a font-size if one is required
+    @if ( type-of( $font-size ) == number ) {
+	    @include font-size( $font-size, $line-height );
+	}
+}

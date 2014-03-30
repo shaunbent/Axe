@@ -1,0 +1,198 @@
+/*------------------------------------*\
+    #WIDTHS
+\*------------------------------------*/
+
+/**
+ * Create our width placeholders, prefixed by the specified namespace.
+ * The good things about using placeholders is only the required
+ * placeholders will be compiled making our stylesheet nice and effective
+ *
+ * Source: https://github.com/csswizardry/csswizardry-grids
+ */
+@mixin widths( $namespace: "" ) {
+
+    /**
+     * One Whole
+     */
+    .#{$namespace}one-whole,
+    %#{$namespace}one-whole           { width: 100%; }
+
+    /**
+     * Halves
+     */
+    .#{$namespace}one-half,
+    %#{$namespace}one-half,
+    .#{$namespace}two-quarters,
+    %#{$namespace}two-quarters,
+    .#{$namespace}three-sixths,
+    %#{$namespace}three-sixths,
+    .#{$namespace}four-eighths,
+    %#{$namespace}four-eighths,
+    .#{$namespace}five-tenths,
+    %#{$namespace}five-tenths,
+    .#{$namespace}six-twelfths,
+    %#{$namespace}six-twelfths         { width: 50%; }
+
+    /**
+     * Thirds
+     */
+    .#{$namespace}one-third,
+    %#{$namespace}one-third,
+    .#{$namespace}two-sixths,
+    %#{$namespace}two-sixths,
+    .#{$namespace}three-ninths,
+    %#{$namespace}three-ninths,
+    .#{$namespace}four-twelfths,
+    %#{$namespace}four-twelfths       { width: 33.3333333%; }
+
+    .#{$namespace}two-thirds,
+    %#{$namespace}two-thirds,
+    .#{$namespace}four-sixths,
+    %#{$namespace}four-sixths,
+    .#{$namespace}six-ninths,
+    %#{$namespace}six-ninths,
+    .#{$namespace}eight-twelfths,
+    %#{$namespace}eight-twelfths      { width: 66.6666666%; }
+
+    /**
+     * Quarters
+     */
+    .#{$namespace}one-quarter,
+    %#{$namespace}one-quarter,
+    .#{$namespace}two-eighths,
+    %#{$namespace}two-eighths,
+    .#{$namespace}three-twelfths,
+    %#{$namespace}three-twelfths      { width: 25%; }
+
+    .#{$namespace}three-quarters,
+    %#{$namespace}three-quarters,
+    .#{$namespace}six-eighths,
+    %#{$namespace}six-eighths,
+    .#{$namespace}nine-twelfths,
+    %#{$namespace}nine-twelfths       { width: 75%; }
+
+    /**
+     * Fifths
+     */
+    .#{$namespace}one-fifth,
+    %#{$namespace}one-fifth,
+    .#{$namespace}two-tenths,
+    %#{$namespace}two-tenths          { width: 20%; }
+
+    .#{$namespace}two-fifths,
+    %#{$namespace}two-fifths,
+    .#{$namespace}four-tenths,
+    %#{$namespace}four-tenths         { width: 40%; }
+
+    .#{$namespace}three-fifths,
+    %#{$namespace}three-fifths,
+    .#{$namespace}six-tenths,
+    %#{$namespace}six-tenths          { width: 60%; }
+
+    .#{$namespace}four-fifths,
+    %#{$namespace}four-fifths,
+    .#{$namespace}eight-tenths,
+    %#{$namespace}eight-tenths        { width: 80%; }
+
+    /**
+     * Sixths
+     */
+    .#{$namespace}one-sixth,
+    %#{$namespace}one-sixth,
+    .#{$namespace}two-twelfths,
+    %#{$namespace}two-twelfths        { width: 16.6666666%; }
+
+    .#{$namespace}five-sixths,
+    %#{$namespace}five-sixths,
+    .#{$namespace}ten-twelfths,
+    %#{$namespace}ten-twelfths        { width: 83.3333333%; }
+
+    /**
+     * Eighths
+     */
+    .#{$namespace}one-eighth,
+    %#{$namespace}one-eighth          { width: 12.5%; }
+
+    .#{$namespace}three-eighths,
+    %#{$namespace}three-eighths       { width: 37.5%; }
+
+    .#{$namespace}five-eighths,
+    %#{$namespace}five-eighths        { width: 62.5%; }
+
+    .#{$namespace}seven-eighths,
+    %#{$namespace}seven-eighths       { width: 87.5%; }
+
+    /**
+     * Ninths
+     */
+    .#{$namespace}one-ninth,
+    %#{$namespace}one-ninth           { width: 11.1111111%; }
+
+    .#{$namespace}two-ninths,
+    %#{$namespace}two-ninths          { width: 22.2222222%; }
+
+    .#{$namespace}four-ninths,
+    %#{$namespace}four-ninths         { width: 44.4444444%; }
+
+    .#{$namespace}five-ninths,
+    %#{$namespace}five-ninths         { width: 55.5555555%; }
+
+    .#{$namespace}seven-ninths,
+    %#{$namespace}seven-ninths        { width: 77.7777777%; }
+
+    .#{$namespace}eight-ninths,
+    %#{$namespace}eight-ninths        { width: 88.8888888%; }
+
+    /**
+     * Tenths
+     */
+    .#{$namespace}one-tenth,
+    %#{$namespace}one-tenth           { width: 10%; }
+
+    .#{$namespace}three-tenths,
+    %#{$namespace}three-tenths        { width: 30%; }
+
+    .#{$namespace}seven-tenths,
+    %#{$namespace}seven-tenths        { width: 70%; }
+
+    .#{$namespace}nine-tenths,
+    %#{$namespace}nine-tenths         { width: 90%; }
+
+    /**
+     * Twelfths
+     */
+    .#{$namespace}one-twelfth,
+    %#{$namespace}one-twelfth         { width:  8.3333333%; }
+
+    .#{$namespace}five-twelfths,
+    %#{$namespace}five-twelfths       { width: 41.6666666%; }
+
+    .#{$namespace}seven-twelfths,
+    %#{$namespace}seven-twelfths      { width: 58.3333333%; }
+
+    .#{$namespace}eleven-twelfths,
+    %#{$namespace}eleven-twelfths     { width: 91.6666666%; }
+
+}
+
+/**
+ * The grid setup mixin creates the inital grid placeholders then
+ * loops through each breakpoint and creates all the placeholders
+ * needed for our grid system.
+ */
+@mixin widths-setup() {
+    @include widths;
+
+    @each $breakpoint in $breakpoints {
+        $breakpoint-name: nth( $breakpoint, 1 );
+
+        @include mq( $from: $breakpoint-name ) {
+            @include widths( '#{$breakpoint-name}--' );
+        }
+    }
+}
+
+/**
+ * Create the widths for our breakpoints
+ */
+@include widths();

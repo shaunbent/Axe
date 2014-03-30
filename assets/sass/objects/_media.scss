@@ -1,0 +1,252 @@
+/*------------------------------------*\
+    #MEDIA
+\*------------------------------------*/
+
+/**
+ * Place any image- and text-like content side-by-side, as per:
+ * stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+ *
+ * Source: https://github.com/inuitcss/objects.media
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-media-gutter:                $base-spacing-unit !default;
+$axe-media-gutter--small:         halve( $axe-media-gutter ) !default;
+$axe-media-gutter--large:         double( $axe-media-gutter ) !default;
+
+$axe-enable-media--small:         false !default;
+$axe-enable-media--large:         false !default;
+$axe-enable-media--rev:           false !default;
+$axe-enable-media--flush:         false !default;
+$axe-enable-media--responsive:    false !default;
+$axe-media-collapse-at:           medium !default;
+
+
+.media,
+%media {
+    @extend %cf;
+
+    display: block;
+}
+
+.media__img,
+%media__img {
+    float: left;
+    @include rem((
+        margin-right: $axe-media-gutter
+    ));
+
+    > img {
+        display: block;
+    }
+}
+
+.media__body,
+%media__body {
+    overflow: hidden;
+
+    &,
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+@if ( $axe-enable-media--small == true ) {
+
+    /**
+     * Small media objects.
+     */
+    .media--small,
+    %media--small {
+
+        > .media__img,
+        > %media__img {
+            @include rem((
+                margin-right: $axe-media-gutter--small
+            ));
+        }
+
+        @if ( $axe-enable-media--rev == true ) {
+
+            /**
+             * Small reversed media objects.
+             */
+            &.media--rev,
+            &%media--rev {
+
+                > .media__img,
+                > %media__img {
+                    @include rem((
+                        margin-right: 0,
+                        margin-left:  $axe-media-gutter--small
+                    ));
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+@if ( $axe-enable-media--large == true ) {
+
+    /**
+     * Large media objects.
+     */
+    .media--large,
+    %media--large {
+
+        > .media__img,
+        > %media__img {
+            @include rem((
+                margin-right: $axe-media-gutter--large
+            ));
+        }
+
+        @if ( $axe-enable-media--rev == true ) {
+
+            /**
+             * Large reversed media objects.
+             */
+            &.media--rev,
+            &%media--rev {
+
+                > .media__img,
+                > %media__img {
+                    @include rem((
+                        margin-right: 0,
+                        margin-left:  $axe-media-gutter--large
+                    ));
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+@if ( $axe-enable-media--rev == true ) {
+
+    /**
+     * Reversed image location (right instead of left). Extends `.media`.
+     */
+    .media--rev,
+    %media--rev {
+
+        > .media__img,
+        > %media__img {
+            float: right;
+            @include rem((
+                margin-right: 0,
+                margin-left: $axe-media-gutter
+            ));
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-media--flush == true ) {
+
+    /**
+     * Flush media objects have no space between the image- and text-content.
+     */
+    .media--flush,
+    %media--flush {
+
+        > .media__img,
+        > %media__img {
+            margin-right: 0;
+            margin-left:  0;
+        }
+    }
+
+}
+
+
+@if ( $axe-enable-media--responsive == true ) {
+
+    /**
+     * Responsive media objects.
+     *
+     * There is a very pragmatic, simple implementation of a responsive media
+     * object, which simply places the text-content beneath the image-content.
+     *
+     * We use a `max-width` media query because:
+     *
+     * a) it is the least verbose method in terms of amount of code required.
+     * b) the media object’s default state is image-next-to-text, so its stacked
+     *    state is the exception, rather than the rule.
+     */
+    @include mq( $from: $axe-media-collapse-at ) {
+
+        .media--responsive,
+        %media--responsive {
+
+            /**
+             * Rework the spacings on regular media objects.
+             */
+            > .media__img,
+            > %media__img {
+                float: none;
+                @include rem((
+                    margin-right: 0,
+                    margin-bottom: $axe-media-gutter,
+                    margin-left:  0
+                ));
+
+            }
+
+            @if ( $axe-enable-media--small == true ) {
+
+                /**
+                 * Small responsive media objects.
+                 *
+                 * Take a little more heavy-handed approach to reworking
+                 * spacings on media objects that are also small media objects
+                 * in their regular state.
+                 */
+                &.media--small,
+                &%media--small {
+
+                    > .media__img,
+                    > %media__img {
+                        margin-right: 0;
+                        margin-left:  0;
+                    }
+
+                }
+
+            }
+
+            @if ( $axe-enable-media--large == true ) {
+
+                /**
+                 * Large responsive media objects.
+                 *
+                 * Take a little more heavy-handed approach to reworking
+                 * spacings on media objects that are also large media objects
+                 * in their regular state.
+                 */
+                &.media--large,
+                &%media--large {
+
+                    > .media__img,
+                    > %media__img {
+                        margin-right: 0;
+                        margin-left:  0;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+}

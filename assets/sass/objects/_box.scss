@@ -1,0 +1,62 @@
+/*------------------------------------*\
+    #BOX
+\*------------------------------------*/
+
+/**
+ * The box object simply boxes off content.
+ *
+ * Source: https://github.com/inuitcss/objects.box
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-box-padding:         $base-spacing-unit !default;
+$axe-box-padding--small:  halve( $axe-box-padding ) !default;
+$axe-box-padding--large:  double( $axe-box-padding ) !default;
+
+$axe-enable-box--small:   false !default;
+$axe-enable-box--large:   false !default;
+
+
+/**
+ * 1. So we can apply the `.box` class to naturally-inline elements.
+ */
+.box,
+%box {
+    @extend %clearfix;
+    display: block; /* [1] */
+    @include rem((
+        padding: $axe-box-padding
+    ));
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+@if ( $axe-enable-box--small == true ) {
+
+    /**
+     * Small box.
+     */
+    .box--small,
+    %box--small {
+        @include rem((
+            padding: $axe-box-padding--small
+        ));
+    }
+}
+
+
+@if ( $axe-enable-box--large == true ) {
+
+    /**
+     * Large box.
+     */
+    .box--large,
+    %box--large {
+        @include rem((
+            padding: $axe-box-padding--large
+        ));
+    }
+}

@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #BARE-LIST
+\*------------------------------------*/
+
+/**
+ * The bare-list object simply removes any indents and bullet points from lists.
+ *
+ * Source: https://github.com/inuitcss/objects.bare-list
+ */
+.bare-list,
+%bare-list {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+}

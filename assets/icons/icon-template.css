@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    #ICONS
+\*------------------------------------*/
+
+/**
+ * Giving an element a class of `.i` will throw it into `icon` mode and apply
+ * the icon font-face.
+ *
+ * Supplying the icon name will load the correct icon e.g.:
+ *
+   <i class="i i--twitter"></i>
+ *
+ */
+
+<% if (fontfaceStyles) { %>@font-face {
+	font-family: '<%= fontBaseName %>';<% if (eot) { %>
+	src: <%= fontSrc1 %>;<% }%>
+	src: <%= fontSrc2 %>;
+	font-weight: normal;
+	font-style: normal;
+}
+<% } %>
+<% if (baseStyles) { %>.i {
+	font-family: '<%= fontBaseName %>';
+    speak: none;
+    font-style: normal!important;
+    font-weight: normal!important;
+    text-decoration: none!important;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+<% } %>
+<% if (iconsStyles) { %>
+    <% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { %>
+        .i-<%= glyphs[glyphIdx] %>:before {
+    	    content: '<% if (ligatures) { %><%= glyphs[glyphIdx] %><% } else { %>\<%= (61696+glyphIdx).toString(16) %><% } %>';
+        }
+    <% } %>
+<% } %>

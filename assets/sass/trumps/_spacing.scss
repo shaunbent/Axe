@@ -1,0 +1,227 @@
+/*------------------------------------*\
+    #SPACING
+\*------------------------------------*/
+
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.(m|p)(t|r|b|l|e|s)(-|+|0) {}` = margin/padding top/right/bottom/left/ends/sides less/more/none
+ *
+ * Source: https://github.com/inuitcss/trumps.spacing
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$axe-margin:                  $base-spacing-unit !default;
+$axe-padding:                 $base-spacing-unit !default;
+
+$axe-enable-margins:          false !default;
+$axe-enable-margins--tiny:    false !default;
+$axe-enable-margins--small:   false !default;
+$axe-enable-margins--large:   false !default;
+$axe-enable-margins--huge:    false !default;
+$axe-enable-margins--none:    false !default;
+
+$axe-enable-paddings:         false !default;
+$axe-enable-paddings--tiny:   false !default;
+$axe-enable-paddings--small:  false !default;
+$axe-enable-paddings--large:  false !default;
+$axe-enable-paddings--huge:   false !default;
+$axe-enable-paddings--none:   false !default;
+
+
+@if ( $axe-enable-margins == true ) {
+
+    /**
+     * Margin helper classes.
+     *
+     * Add margins.
+     */
+    .m       { margin:           $axe-margin !important; }
+    .mt      { margin-top:       $axe-margin !important; }
+    .mr      { margin-right:     $axe-margin !important; }
+    .mb      { margin-bottom:    $axe-margin !important; }
+    .ml      { margin-left:      $axe-margin !important; }
+    .me      { margin-top:       $axe-margin !important; margin-bottom:    $axe-margin !important; }
+    .ms      { margin-right:     $axe-margin !important; margin-left:      $axe-margin !important; }
+
+}
+
+
+@if ( $axe-enable-margins--tiny == true ) {
+
+    /**
+     * Add tiny margins.
+     */
+    .m--     { margin:           quarter( $axe-margin ) !important; }
+    .mt--    { margin-top:       quarter( $axe-margin ) !important; }
+    .mr--    { margin-right:     quarter( $axe-margin ) !important; }
+    .mb--    { margin-bottom:    quarter( $axe-margin ) !important; }
+    .ml--    { margin-left:      quarter( $axe-margin ) !important; }
+    .me--    { margin-top:       quarter( $axe-margin ) !important; margin-bottom:   quarter( $axe-margin ) !important; }
+    .ms--    { margin-right:     quarter( $axe-margin ) !important; margin-left:     quarter( $axe-margin ) !important; }
+
+}
+
+
+@if ( $axe-enable-margins--small == true ) {
+
+    /**
+     * Add small margins.
+     */
+    .m-      { margin:           halve( $axe-margin ) !important; }
+    .mt-     { margin-top:       halve( $axe-margin ) !important; }
+    .mr-     { margin-right:     halve( $axe-margin ) !important; }
+    .mb-     { margin-bottom:    halve( $axe-margin ) !important; }
+    .ml-     { margin-left:      halve( $axe-margin ) !important; }
+    .me-     { margin-top:       halve( $axe-margin ) !important; margin-bottom: halve( $axe-margin ) !important; }
+    .ms-     { margin-right:     halve( $axe-margin ) !important; margin-left:   halve( $axe-margin ) !important; }
+
+}
+
+
+@if ( $axe-enable-margins--large == true ) {
+
+    /**
+     * Add large margins.
+     */
+    .m\+     { margin:           double( $axe-margin ) !important; }
+    .mt\+    { margin-top:       double( $axe-margin ) !important; }
+    .mr\+    { margin-right:     double( $axe-margin ) !important; }
+    .mb\+    { margin-bottom:    double( $axe-margin ) !important; }
+    .ml\+    { margin-left:      double( $axe-margin ) !important; }
+    .me\+    { margin-top:       double( $axe-margin ) !important; margin-bottom:    double( $axe-margin ) !important; }
+    .ms\+    { margin-right:     double( $axe-margin ) !important; margin-left:      double( $axe-margin ) !important; }
+
+}
+
+
+@if ( $axe-enable-margins--huge == true ) {
+
+    /**
+     * Add huge margins.
+     */
+    .m\+\+   { margin:           quadruple( $axe-margin ) !important; }
+    .mt\+\+  { margin-top:       quadruple( $axe-margin ) !important; }
+    .mr\+\+  { margin-right:     quadruple( $axe-margin ) !important; }
+    .mb\+\+  { margin-bottom:    quadruple( $axe-margin ) !important; }
+    .ml\+\+  { margin-left:      quadruple( $axe-margin ) !important; }
+    .me\+\+  { margin-top:       quadruple( $axe-margin ) !important; margin-bottom: quadruple( $axe-margin ) !important; }
+    .ms\+\+  { margin-right:     quadruple( $axe-margin ) !important; margin-left:   quadruple( $axe-margin ) !important; }
+
+}
+
+
+@if ( $axe-enable-margins--none == true ) {
+
+    /**
+     * Remove margins.
+     */
+    .m0      { margin:           0 !important; }
+    .mt0     { margin-top:       0 !important; }
+    .mr0     { margin-right:     0 !important; }
+    .mb0     { margin-bottom:    0 !important; }
+    .ml0     { margin-left:      0 !important; }
+    .me0     { margin-top:       0 !important; margin-bottom:    0 !important; }
+    .ms0     { margin-right:     0 !important; margin-left:      0 !important; }
+
+}
+
+
+@if ( $axe-enable-paddings == true ) {
+
+    /**
+     * Padding helper classes.
+     *
+     * Add paddings.
+     */
+    .p       { padding:          $axe-padding !important; }
+    .pt      { padding-top:      $axe-padding !important; }
+    .pr      { padding-right:    $axe-padding !important; }
+    .pb      { padding-bottom:   $axe-padding !important; }
+    .pl      { padding-left:     $axe-padding !important; }
+    .pe      { padding-top:      $axe-padding !important; padding-bottom:  $axe-padding !important; }
+    .ps      { padding-right:    $axe-padding !important; padding-left:    $axe-padding !important; }
+
+}
+
+
+@if ( $axe-enable-paddings--tiny == true ) {
+
+    /**
+     * Add tiny paddings.
+     */
+    .p--     { padding:           quarter( $axe-padding ) !important; }
+    .pt--    { padding-top:       quarter( $axe-padding ) !important; }
+    .pr--    { padding-right:     quarter( $axe-padding ) !important; }
+    .pb--    { padding-bottom:    quarter( $axe-padding ) !important; }
+    .pl--    { padding-left:      quarter( $axe-padding ) !important; }
+    .pe--    { padding-top:       quarter( $axe-padding ) !important; padding-bottom:    quarter( $axe-padding ) !important; }
+    .ps--    { padding-right:     quarter( $axe-padding ) !important; padding-left:      quarter( $axe-padding ) !important; }
+
+}
+
+
+@if ( $axe-enable-paddings--small == true ) {
+
+    /**
+     * Add small paddings.
+     */
+
+    .p-      { padding:           halve($axe-padding) !important; }
+    .pt-     { padding-top:       halve($axe-padding) !important; }
+    .pr-     { padding-right:     halve($axe-padding) !important; }
+    .pb-     { padding-bottom:    halve($axe-padding) !important; }
+    .pl-     { padding-left:      halve($axe-padding) !important; }
+    .pe-     { padding-top:       halve($axe-padding) !important; padding-bottom:  halve($axe-padding) !important; }
+    .ps-     { padding-right:     halve($axe-padding) !important; padding-left:    halve($axe-padding) !important; }
+
+}
+
+
+@if ( $axe-enable-paddings--large == true ) {
+
+    /**
+     * Add large paddings.
+     */
+    .p\+     { padding:           double( $axe-padding ) !important; }
+    .pt\+    { padding-top:       double( $axe-padding ) !important; }
+    .pr\+    { padding-right:     double( $axe-padding ) !important; }
+    .pb\+    { padding-bottom:    double( $axe-padding ) !important; }
+    .pl\+    { padding-left:      double( $axe-padding ) !important; }
+    .pe\+    { padding-top:       double( $axe-padding ) !important; padding-bottom: double( $axe-padding ) !important; }
+    .ps\+    { padding-right:     double( $axe-padding ) !important; padding-left:   double( $axe-padding ) !important; }
+
+}
+
+
+@if ( $axe-enable-paddings--huge == true ) {
+
+    /**
+     * Add huge paddings.
+     */
+    .p\+\+   { padding:           quadruple( $axe-padding ) !important; }
+    .pt\+\+  { padding-top:       quadruple( $axe-padding ) !important; }
+    .pr\+\+  { padding-right:     quadruple( $axe-padding ) !important; }
+    .pb\+\+  { padding-bottom:    quadruple( $axe-padding ) !important; }
+    .pl\+\+  { padding-left:      quadruple( $axe-padding ) !important; }
+    .pe\+\+  { padding-top:       quadruple( $axe-padding ) !important; padding-bottom:  quadruple( $axe-padding ) !important; }
+    .ps\+\+  { padding-right:     quadruple( $axe-padding ) !important; padding-left:    quadruple( $axe-padding ) !important; }
+
+}
+
+
+@if ( $axe-enable-paddings--none == true ) {
+
+    /**
+     * Remove paddings.
+     */
+    .p0      { padding:          0 !important; }
+    .pt0     { padding-top:      0 !important; }
+    .pr0     { padding-right:    0 !important; }
+    .pb0     { padding-bottom:   0 !important; }
+    .pl0     { padding-left:     0 !important; }
+    .pe0     { padding-top:      0 !important; padding-bottom:   0 !important; }
+    .ps0     { padding-right:    0 !important; padding-left:     0 !important; }
+
+}

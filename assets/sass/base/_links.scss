@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
+
+/**
+ * Global link styles
+ */
+a {
+	 color: $link-color;
+
+	 &:hover,
+	 &:active {
+		 color: $link-color-hover;
+	 }
+}

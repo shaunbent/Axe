@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    #OLD IE
+\*------------------------------------*/
+
+/**
+ * A mixin to conditionally serve IE fixes to only the required browsers
+ * keep modern browser free of hacks
+ */
+@mixin old-ie {
+
+	@if ( $axe-old-ie == true ) {
+
+		@content;
+
+	}
+
+}

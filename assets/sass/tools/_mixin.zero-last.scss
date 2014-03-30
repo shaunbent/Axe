@@ -1,0 +1,18 @@
+/*------------------------------------*\
+    #ZERO LAST
+\*------------------------------------*/
+
+/**
+ * Removes margin-bottom from the last child
+ * element.
+ *
+   `@include zero-last;`
+ *
+ */
+@mixin zero-last( ) {
+
+    > :last-child {
+	    margin-bottom: 0;
+    }
+
+}

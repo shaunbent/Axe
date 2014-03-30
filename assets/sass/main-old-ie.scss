@@ -1,0 +1,18 @@
+/**
+ * The same as `main.scss` but includes some additional flags
+ * which cause the styles to render fixed for old IE
+ */
+
+/*------------------------------------*\
+	#SETUP
+\*------------------------------------*/
+
+$axe-old-ie: true;
+$axe-responsive: false;
+$axe-static-breakpoint: large;
+
+/*------------------------------------*\
+	#BUILD
+\*------------------------------------*/
+
+@import "main";

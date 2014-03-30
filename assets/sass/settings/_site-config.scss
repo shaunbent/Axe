@@ -1,0 +1,49 @@
+/*------------------------------------*\
+    #SITE CONFIG
+\*------------------------------------*/
+
+/**
+ * Base stuff
+ */
+$base-font-size: 16px;
+$base-line-height: 24px;
+$base-font-face: sans-serif;
+
+
+/**
+ * Headings
+ */
+$heading-font-size-1: 36px;
+$heading-font-size-2: 30px;
+$heading-font-size-3: 24px;
+$heading-font-size-4: 20px;
+$heading-font-size-5: 16px;
+$heading-font-size-6: 14px;
+
+
+/**
+ * Base spacing
+ */
+$base-spacing-unit: $base-line-height;
+
+
+/**
+ * Base colours
+ */
+$base-text-color: #333;
+$base-background-color: #fff;
+$base-link-color: rgb(0,96,165);
+$base-link-color-hover: lighten( $link-color, 20% );
+
+
+/**
+ * Generic colours
+ */
+$white: rgb(255,255,255);
+$black: rgb(0,0,0);
+
+
+/**
+ * Standing Easing Method
+ */
+$default-easing: cubic-bezier(0.25, 0.1, 0.25, 1);

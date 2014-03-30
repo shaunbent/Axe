@@ -1,0 +1,20 @@
+# compiled version used during testing
+
+main.css
+main-old-ie.css
+main.js
+main.dev.js
+
+# build files
+
+.sass-cache/
+node_modules/
+bower_components/
+
+# install files
+
+Gemfile.lock
+
+# misc files
+
+.DS_Store
